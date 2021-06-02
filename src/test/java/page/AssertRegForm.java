@@ -9,32 +9,28 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class AssertRegForm extends TestBase {
 
-    public  SelenideElement title = $("#example-modal-sizes-title-lg");
-    public   SelenideElement assertStudentName = $x("//td[text()='Student Name']");
-    public   SelenideElement assertStudentEmail = $x("//td[text()='Student Email']");
-    public  SelenideElement assertGender = $x("//td[text()='Gender']");
-    public   SelenideElement assertMobile = $x("//td[text()='Mobile']");
-    public   SelenideElement assertBirthDayStudent = $x("//td[text()='Date of Birth']");
-    public   SelenideElement assertSubject = $x("//td[text()='Subjects']");
-    public   SelenideElement assertHobbies = $x("//td[text()='Hobbies']");
-    public   SelenideElement assertThatPictureDownload = $x("//td[text()='Picture']");
-    public  SelenideElement assertCurrentAddress = $x("//td[text()='Address']");
-    public   SelenideElement assertStateAndCity = $x("//td[text()='State and City']");
+    public SelenideElement title = $("#example-modal-sizes-title-lg");
+    public SelenideElement StudentName = $x("//td[text()='Student Name']").parent();
+    public SelenideElement assertStudentEmail = $x("//td[text()='Student Email']").parent();
+    public SelenideElement assertGender = $x("//td[text()='Gender']").parent();
+    public SelenideElement assertMobile = $x("//td[text()='Mobile']").parent();
+    public SelenideElement assertBirthDayStudent = $x("//td[text()='Date of Birth']").parent();
+    public SelenideElement assertSubject = $x("//td[text()='Subjects']").parent();
+    public SelenideElement assertHobbies = $x("//td[text()='Hobbies']").parent();
+    public SelenideElement assertThatPictureDownload = $x("//td[text()='Picture']").parent();
+    public SelenideElement assertCurrentAddress = $x("//td[text()='Address']").parent();
+    public SelenideElement assertStateAndCity = $x("//td[text()='State and City']").parent();
 
 
-//        public void confirmRegistration(String firstName,String lastName,String email,String mobile,String dayOfBirth,
-//                                    String monthOfBirth,String yearOfBirth,String subject,String address
-    //                          String state,String city)
-
-    public void assertRegFormOpen() {
-        title.shouldHave(text("Thank for submitting the form"));
+    public void assertTitle() {
+        title.shouldHave(text("Thanks for submitting the form"));
     }
 
     public void assertStudentName(String firstName, String lastName) {
-        assertStudentName.shouldHave(text(firstName + " " + lastName));
+        StudentName.shouldHave(text(firstName + " " + lastName));
     }
 
-    public void assertEmail(String value) {
+    public void assertEmail(String email) {
         assertStudentEmail.parent().shouldHave(text(email));
     }
 
@@ -42,11 +38,11 @@ public class AssertRegForm extends TestBase {
         assertGender.parent().shouldHave(text("Male"));
     }
 
-    public void assertMobile(String value) {
+    public void assertMobile(String mobile) {
         assertMobile.parent().shouldHave(text(mobile));
     }
 
-    public void assertBirthDayStudent(String value) {
+    public void assertBirthDayStudent(String dayOfBirth, String monthOfBirth, String yearOfBirth) {
         assertBirthDayStudent.parent().shouldHave(text(dayOfBirth + " " + monthOfBirth + "," + yearOfBirth));
     }
 
@@ -62,11 +58,11 @@ public class AssertRegForm extends TestBase {
         assertThatPictureDownload.parent().shouldHave(text("1.png"));
     }
 
-    public void assertCurrentAddress(String value) {
+    public void assertCurrentAddress(String address) {
         assertCurrentAddress.parent().shouldHave(text(address));
     }
 
-    public void assertStateAndCity(String value) {
+    public void assertStateAndCity(String state, String city) {
         assertStateAndCity.parent().shouldHave(text(state + " " + city));
     }
 }

@@ -13,7 +13,6 @@ public class TestTestBox extends TestBase {
     AssertRegForm assertRegForm = new AssertRegForm();
 
 
-
     @Test
     void successufulSubmitTest() {
         studentRegistration.openPage();
@@ -33,21 +32,17 @@ public class TestTestBox extends TestBase {
 
         //Asserts
 
-//        assertRegForm.assertRegFormOpen();
-        assertRegForm.assertStudentName(firstName,lastName);
+        assertRegForm.assertTitle();
+        assertRegForm.assertStudentName(firstName, lastName);
         assertRegForm.assertEmail(email);
         assertRegForm.assertGender("Male");
         assertRegForm.assertMobile(mobile);
-        assertRegForm.assertBirthDayStudent(dayOfBirth + " " + monthOfBirth + "," + yearOfBirth);
+        assertRegForm.assertBirthDayStudent(dayOfBirth, monthOfBirth, yearOfBirth);
         assertRegForm.assertSubject("Maths");
         assertRegForm.assertHobbies("Sports");
         assertRegForm.assertThatPictureDownload("1.png");
         assertRegForm.assertCurrentAddress(address);
-        assertRegForm.assertStateAndCity(state + " " + city );
-//        studentRegistration.confirmRegistration(firstName,lastName,email,mobile,dayOfBirth,monthOfBirth,yearOfBirth,
-//                subject,address,state,city);
-
-
+        assertRegForm.assertStateAndCity(state, city);
 
 
     }
