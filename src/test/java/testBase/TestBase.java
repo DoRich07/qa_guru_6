@@ -1,4 +1,4 @@
-package TestBase;
+package testBase;
 
 import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
@@ -18,6 +18,7 @@ public class TestBase {
             address = faker.address().fullAddress(),
             state = "NCR",
             city = "Delhi";
+
     @BeforeAll
     static void setup() {
         Configuration.startMaximized = true;

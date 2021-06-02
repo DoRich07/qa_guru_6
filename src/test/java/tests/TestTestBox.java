@@ -1,29 +1,22 @@
 package tests;
 
-import TestBase.TestBase;
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
-import com.github.javafaker.Faker;
-import org.junit.jupiter.api.BeforeAll;
+import page.AssertRegForm;
+import testBase.TestBase;
 import org.junit.jupiter.api.Test;
 import page.Calendar;
 import page.StudentRegistration;
-
-import java.util.Locale;
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.*;
 
 public class TestTestBox extends TestBase {
 
     StudentRegistration studentRegistration = new StudentRegistration();
     Calendar calendar = new Calendar();
+    AssertRegForm assertRegForm = new AssertRegForm();
 
 
 
     @Test
-    void successufulSybmitTest() {
-        studentRegistration.openBrowser();
+    void successufulSubmitTest() {
+        studentRegistration.openPage();
         studentRegistration.typeFirstName(firstName);
         studentRegistration.typeLastName(lastName);
         studentRegistration.typeEmail(email);
@@ -37,8 +30,23 @@ public class TestTestBox extends TestBase {
         studentRegistration.selectState(state);
         studentRegistration.selectCity(city);
         studentRegistration.submitForm();
-        studentRegistration.confirmRegistration(firstName,lastName,email,mobile,dayOfBirth,monthOfBirth,yearOfBirth,
-                subject,address,state,city);
+
+        //Asserts
+
+//        assertRegForm.assertRegFormOpen();
+        assertRegForm.assertStudentName(firstName,lastName);
+        assertRegForm.assertEmail(email);
+        assertRegForm.assertGender("Male");
+        assertRegForm.assertMobile(mobile);
+        assertRegForm.assertBirthDayStudent(dayOfBirth + " " + monthOfBirth + "," + yearOfBirth);
+        assertRegForm.assertSubject("Maths");
+        assertRegForm.assertHobbies("Sports");
+        assertRegForm.assertThatPictureDownload("1.png");
+        assertRegForm.assertCurrentAddress(address);
+        assertRegForm.assertStateAndCity(state + " " + city );
+//        studentRegistration.confirmRegistration(firstName,lastName,email,mobile,dayOfBirth,monthOfBirth,yearOfBirth,
+//                subject,address,state,city);
+
 
 
 
